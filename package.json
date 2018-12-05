@@ -13,14 +13,14 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev" : "gulp && node index.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:joshghent/NodeChat.git"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2"
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.7"
   }
 }
