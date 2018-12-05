@@ -23,6 +23,7 @@ io.on('connection', function(socket){
     socket.broadcast.emit('new message', {
       username: socket.username,
       message: message,
+      avatar: socket.avatar,
       messageClass: "from-them blackText"
     });
   });
@@ -48,6 +49,12 @@ io.on('connection', function(socket){
   // When a new user is registered (they make a username), set their username on the server.
   socket.on('add user', function(username){
     socket.username = username;
+  });
+
+  // When a user adds a custom avatar it sets it on the server.
+  socket.on('add avatar', function(avatar){
+    socket.avatar = avatar;
+    console.log("add new avatar" + socket.avatar);
   });
   
   // When a new user joins broadcast it to the other users on the server
