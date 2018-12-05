@@ -1,16 +1,9 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var port = process.env.PORT || 9876;
-var path = require('path');
-var io = require('socket.io')(http);
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var shortid = require('shortid');
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/public/src/index.html');
-});
+var port = process.env.PORT || 9876;
 
 io.on('connection', function(socket){
 
@@ -69,6 +62,6 @@ io.on('connection', function(socket){
 });
 
 // Create the server - log the port number we are using
-http.listen(port, function(){
+server.listen(port, function(){
   console.log('listening on *:' + port);
 });
