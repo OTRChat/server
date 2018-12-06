@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { server } from '../index';
 
 const io = require('socket.io-client'); //eslint-disable-line
 
