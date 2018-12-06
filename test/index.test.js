@@ -55,10 +55,6 @@ describe('Connecting and Disconnecting', () => {
       });
     });
   });
-
-  it("Saves an avatar when it's uploaded", (done) => {
-    done();
-  });
 });
 
 describe('Messaging', () => {
