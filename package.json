@@ -16,7 +16,7 @@
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "pretty": "prettier --write \"**/*.{js,css,md,json,yaml,yml}\"",
-    "test": "./node_modules/.bin/mocha --require @babel/polyfill --require @babel/register --colors"
+    "test": "./node_modules/.bin/mocha --require @babel/polyfill --require @babel/register --colors --exit"
   },
   "repository": {
     "type": "git",

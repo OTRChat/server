@@ -30,32 +30,28 @@ io.on('connection', function (socket) {
 
   socket.on('new message', function (message) {
     // Broadcast will send to all users except the client that sent the message
-    console.log(message);
     socket.broadcast.emit('new message', {
       username: socket.username,
       message: message,
       avatar: socket.avatar,
       messageClass: 'from-them blackText'
     });
-  }); //   socket.on('typing', () => {
-  //     socket.broadcast.emit('typing', {
-  //       username: socket.username,
-  //     });
-  //   });
-  //   socket.on('stop typing', () => {
-  //     socket.broadcast.emit('stop typing', {
-  //       username: socket.username,
-  //     });
-  //   });
-  //   // When a new user is registered (they make a username), set their username on the server.
-  //   socket.on('add user', (username) => {
-  //     socket.username = username;
-  //   });
-  //   // When a user adds a custom avatar it sets it on the server.
-  //   socket.on('add avatar', (avatar) => {
-  //     socket.avatar = avatar;
-  //     console.log(`add new avatar ${socket.avatar}`);
-  //   });
+  });
+  socket.on('typing', function () {
+    socket.broadcast.emit('typing', {
+      username: socket.username
+    });
+  });
+  socket.on('stop typing', function () {
+    socket.broadcast.emit('stop typing', {
+      username: socket.username
+    });
+  }); // When a user adds a custom avatar it sets it on the server.
+
+  socket.on('add avatar', function (avatar) {
+    socket.avatar = avatar;
+    console.log("add new avatar ".concat(socket.avatar));
+  });
 }); // Create the server - log the port number we are using
 
 exports.server = server.listen(port, function () {
