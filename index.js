@@ -60,6 +60,6 @@ io.on('connection', (socket) => {
 });
 
 // Create the server - log the port number we are using
-server.listen(port, () => {
+exports.server = server.listen(port, () => {
   console.log(`listening on *: ${port}`);
 });
