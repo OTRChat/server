@@ -27,8 +27,6 @@ io.on('connection', (socket) => {
   // When the server receives a new message to send we broadcast it to the other users on the server
   socket.on('new message', (message) => {
     // Broadcast will send to all users except the client that sent the message
-
-    console.log(message);
     socket.broadcast.emit('new message', {
       username: socket.username,
       message,
@@ -37,11 +35,12 @@ io.on('connection', (socket) => {
     });
   });
 
-  //   socket.on('typing', () => {
-  //     socket.broadcast.emit('typing', {
-  //       username: socket.username,
-  //     });
-  //   });
+  socket.on('typing', () => {
+    socket.broadcast.emit('typing', {
+      username: socket.username,
+    });
+  });
+
   //   socket.on('stop typing', () => {
   //     socket.broadcast.emit('stop typing', {
   //       username: socket.username,

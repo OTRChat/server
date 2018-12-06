@@ -55,6 +55,10 @@ describe('Connecting and Disconnecting', () => {
       });
     });
   });
+
+  it("Saves an avatar when it's uploaded", (done) => {
+    done();
+  });
 });
 
 describe('Messaging', () => {
@@ -86,5 +90,19 @@ describe('Messaging', () => {
       expect(msg.messageClass).to.equal('from-them blackText');
       done();
     });
+  });
+
+  it('Notifies clients when a user is typing', (done) => {
+    client1.emit('typing');
+
+    client2.on('typing', (username) => {
+      expect(username).to.eql({ username: chatUser1.username });
+      client1.emit('stop typing');
+      done();
+    });
+  });
+
+  it('Notifies clients when a user stops typing', (done) => {
+    done();
   });
 });
