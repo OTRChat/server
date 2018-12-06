@@ -41,11 +41,12 @@ io.on('connection', (socket) => {
     });
   });
 
-  //   socket.on('stop typing', () => {
-  //     socket.broadcast.emit('stop typing', {
-  //       username: socket.username,
-  //     });
-  //   });
+  socket.on('stop typing', () => {
+    socket.broadcast.emit('stop typing', {
+      username: socket.username,
+    });
+  });
+
   //   // When a new user is registered (they make a username), set their username on the server.
   //   socket.on('add user', (username) => {
   //     socket.username = username;

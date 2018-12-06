@@ -103,6 +103,11 @@ describe('Messaging', () => {
   });
 
   it('Notifies clients when a user stops typing', (done) => {
-    done();
+    client1.emit('stop typing');
+
+    client2.on('stop typing', (username) => {
+      expect(username).to.eql({ username: chatUser1.username });
+      done();
+    });
   });
 });
