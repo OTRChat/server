@@ -1,0 +1,14 @@
+language: node_js
+branches:
+  only:
+    - master
+node_js:
+  - "stable"
+  - "lts/*"
+  - "10"
+cache:
+  directories:
+    - "$HOME/.npm"
+script:
+  - npm test
+  - npm build

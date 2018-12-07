@@ -7,20 +7,38 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.10.2",
-    "push.js": "0.0.11",
-    "shortid": "2.2.6",
     "socket.io": "^1.4.6"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev" : "gulp && node index.js"
+    "start": "nodemon --exec babel-node index.js",
+    "build": "babel index.js --out-dir dist",
+    "serve": "node dist/index.js",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
+    "pretty": "prettier --write \"**/*.{js,css,md,json,yaml,yml}\"",
+    "test": "./node_modules/.bin/mocha --require @babel/polyfill --require @babel/register --colors --exit"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:joshghent/NodeChat.git"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2"
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.7",
+    "prettier": "^1.15.3"
   }
 }
